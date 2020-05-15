@@ -1,0 +1,6 @@
+# Project exclude paths
+/flume-demo/target/
+/guli-video/target/
+/guli-weibo/target/
+/hbase-demo/target/
+/hive-udf/target/
