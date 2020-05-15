@@ -4,3 +4,5 @@
 /guli-weibo/target/
 /hbase-demo/target/
 /hive-udf/target/
+
+*.iml
