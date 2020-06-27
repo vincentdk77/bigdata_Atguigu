@@ -73,7 +73,7 @@ public class HBaseUtil {
         for(String cf:cfs){
             HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(cf);
 
-            //7.设置版本
+            //7.设置版本 // TODO: 2020/5/16 业务要求,比如要求每个人的微博要显示最新的三条 
             hColumnDescriptor.setMaxVersions(versions);
             hTableDescriptor.addFamily(hColumnDescriptor);
         }

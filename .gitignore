@@ -6,3 +6,4 @@
 /hive-udf/target/
 
 *.iml
+*.idea
