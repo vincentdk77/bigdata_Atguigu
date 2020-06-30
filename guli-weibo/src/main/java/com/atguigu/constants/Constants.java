@@ -6,6 +6,7 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 
 public class Constants {
     //HBase的配置信息
+    //这里没有写详细配置是因为有hbase-site.xml配置文件，只要使用 HBaseConfiguration.create() 创建configuration，就会加在这个xml里面的配置内容！
     public static final Configuration CONFIGURATION = HBaseConfiguration.create();
 
     //命名空间
