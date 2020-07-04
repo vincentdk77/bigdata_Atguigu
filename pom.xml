@@ -17,7 +17,26 @@
         <module>hbase-demo</module>
         <module>guli-weibo</module>
         <module>kylin-demo</module>
+        <module>spark</module>
     </modules>
 
+    <build>
+        <finalName>WordCount</finalName>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
