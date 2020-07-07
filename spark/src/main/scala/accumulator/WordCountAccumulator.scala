@@ -35,12 +35,14 @@ class WordCountAccumulator extends AccumulatorV2[String, util.ArrayList[String]]
     // 返回累加器的结果 （Out）
     override def value: util.ArrayList[String] = list
 
+}
+object WordCountAccumulator{
     /**
-     *统计rdd中的包含h字符的字符串，汇成集合
-     * @param args
-     */
+      *统计rdd中的包含h字符的字符串，汇成集合
+      * @param args
+      */
     def main(args: Array[String]): Unit = {
-        val sc = new SparkContext(new SparkConf())
+        val sc = new SparkContext(new SparkConf().setAppName("test").setMaster("local[*]"))
         //创建累加器
         val wordAccumulator = new WordCountAccumulator
         //注册累加器

@@ -11,16 +11,17 @@ class CustomerPartitioner(numParts:Int) extends Partitioner{
     val ckey: String = key.toString
     ckey.substring(ckey.length-1).toInt%numParts
   }
-
+}
+object CustomerPartitioner{
   def main(args: Array[String]): Unit = {
-    val sc = new SparkContext(new SparkConf())
+    val sc = new SparkContext(new SparkConf().setAppName("test").setMaster("local[*]"))
     val rdd: RDD[(String, String)] = sc.makeRDD(List(("key1", "value1"), ("key2", "value2"), ("key3", "value3"), ("key4", "value4")))
-//    val rdd2 = sc.parallelize(Array((1,"aaa"),(2,"bbb"),(3,"ccc"),(4,"ddd")),4)
-    val partitionRdd: RDD[(String, String)] = rdd.partitionBy(new CustomerPartitioner(10))
-    partitionRdd.foreach{case (a,b)=>{
-      println(a)
-    }}
+    //    val rdd2 = sc.parallelize(Array((1,"aaa"),(2,"bbb"),(3,"ccc"),(4,"ddd")),4)
+    val partitionRdd: RDD[(String, String)] = rdd.partitionBy(new CustomerPartitioner(2))
+    partitionRdd.glom().foreach{case (array) =>{
+      array.toList.foreach(println(_))
+    }
 
-
+    }
   }
 }
