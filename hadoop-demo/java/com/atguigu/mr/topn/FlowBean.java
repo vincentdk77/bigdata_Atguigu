@@ -1,50 +1,40 @@
-package com.atguigu.mr.flowsum;
+package com.atguigu.mr.topn;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
-public class FlowBean implements Writable {
+public class FlowBean implements WritableComparable<FlowBean>{
 
-	private long upFlow;// 上行流量
-	private long downFlow;// 下行流量
-	private long sumFlow;// 总流量
-
-	// 空参构造， 为了后续反射用
+	private long upFlow;
+	private long downFlow;
+	private long sumFlow;
+	
+	
 	public FlowBean() {
 		super();
 	}
-	
+
 	public FlowBean(long upFlow, long downFlow) {
 		super();
 		this.upFlow = upFlow;
 		this.downFlow = downFlow;
-		sumFlow = upFlow + downFlow;
 	}
 
-	// 序列化方法
 	@Override
 	public void write(DataOutput out) throws IOException {
-		
 		out.writeLong(upFlow);
 		out.writeLong(downFlow);
 		out.writeLong(sumFlow);
 	}
 
-	// 反序列化方法
 	@Override
 	public void readFields(DataInput in) throws IOException {
-		// 必须要求和序列化方法顺序一致
 		upFlow = in.readLong();
 		downFlow = in.readLong();
 		sumFlow = in.readLong();
-	}
-
-	@Override
-	public String toString() {
-		return upFlow + "\t" + downFlow + "\t" + sumFlow;
 	}
 
 	public long getUpFlow() {
@@ -71,11 +61,32 @@ public class FlowBean implements Writable {
 		this.sumFlow = sumFlow;
 	}
 
-	public void set(long upFlow2, long downFlow2) {
-		
-		upFlow = upFlow2;
-		downFlow = downFlow2;
-		sumFlow = upFlow2 + downFlow2;
-		
+	@Override
+	public String toString() {
+		return upFlow + "\t" + downFlow + "\t" + sumFlow;
 	}
+
+	public void set(long downFlow2, long upFlow2) {
+		downFlow = downFlow2;
+		upFlow = upFlow2;
+		sumFlow = downFlow2 + upFlow2;
+	}
+
+	@Override
+	public int compareTo(FlowBean bean) {
+		
+		int result;
+		
+		if (this.sumFlow > bean.getSumFlow()) {
+			result = -1;
+		}else if (this.sumFlow < bean.getSumFlow()) {
+			result = 1;
+		}else {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+
 }
