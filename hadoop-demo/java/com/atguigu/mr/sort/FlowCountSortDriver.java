@@ -35,7 +35,7 @@ public class FlowCountSortDriver {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(FlowBean.class);
 
-		// 关联分区
+		// 关联分区 // TODO: 2020/8/17 分区排序   （如果是全排序就需要这两步，直接bean继承接口，重写compareTo方法即可）
 		job.setPartitionerClass(ProvincePartitioner.class);
 		job.setNumReduceTasks(5);
 		

@@ -3,6 +3,9 @@ package com.atguigu.mr.order;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
 
+/**
+ * 分组排序 需要另外定义一个类继承WritableComparator，并重写compare方法
+ */
 public class OrderGroupingComparator extends WritableComparator{
 
 	protected OrderGroupingComparator(){

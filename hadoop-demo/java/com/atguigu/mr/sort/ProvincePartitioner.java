@@ -3,6 +3,9 @@ package com.atguigu.mr.sort;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 
+/**
+ * 这里分区是为了区内排序
+ */
 public class ProvincePartitioner extends Partitioner<FlowBean, Text>{
 
 	@Override

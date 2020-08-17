@@ -78,7 +78,7 @@ public class FlowBean implements WritableComparable<FlowBean>{
 		int result;
 		
 		if (this.sumFlow > bean.getSumFlow()) {
-			result = -1;
+			result = -1;//倒序排序
 		}else if (this.sumFlow < bean.getSumFlow()) {
 			result = 1;
 		}else {

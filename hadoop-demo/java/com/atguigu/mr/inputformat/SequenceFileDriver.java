@@ -27,7 +27,7 @@ public class SequenceFileDriver {
 		job.setMapperClass(SequenceFileMapper.class);
 		job.setReducerClass(SequenceFileReducer.class);
 
-		// 7设置输入的inputFormat
+		// 7设置输入的inputFormat // TODO: 2020/8/17 设置inputformat与putformat
 		job.setInputFormatClass(WholeFileInputformat.class);
 		// 8设置输出的outputFormat
 		job.setOutputFormatClass(SequenceFileOutputFormat.class);

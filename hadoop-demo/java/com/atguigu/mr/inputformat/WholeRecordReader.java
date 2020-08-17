@@ -14,6 +14,11 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
+/**
+ * 实现一次读取一个完整文件，封装为kv
+ * 1、采用IO流一次读取一个文件输出到value中，因为设置了不可切片，最终把所有文件都封装到了value中
+ * 2、获取文件路径信息+名称，并设置key
+ */
 public class WholeRecordReader extends RecordReader<Text, BytesWritable>{
 
 	FileSplit split;
@@ -36,28 +41,28 @@ public class WholeRecordReader extends RecordReader<Text, BytesWritable>{
 		
 		if (isProgress) {
 			byte[] buf = new byte[(int) split.getLength()];
-			
+
 			// 1 获取fs对象
 			Path path = split.getPath();
 			FileSystem fs = path.getFileSystem(configuration);
-			
+
 			// 2 获取输入流
 			FSDataInputStream fis = fs.open(path);
-			
+
 			// 3 拷贝
 			IOUtils.readFully(fis, buf, 0, buf.length);
-			
+
 			// 4 封装v
 			v.set(buf, 0, buf.length);
-			
+
 			// 5 封装k
 			k.set(path.toString());
-			
+
 			// 6 关闭资源
 			IOUtils.closeStream(fis);
-			
+
 			isProgress = false;
-			
+
 			return true;
 		}
 		
