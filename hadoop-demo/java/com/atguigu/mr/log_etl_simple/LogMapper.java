@@ -1,4 +1,4 @@
-package com.atguigu.mr.log;
+package com.atguigu.mr.log_etl_simple;
 
 import java.io.IOException;
 

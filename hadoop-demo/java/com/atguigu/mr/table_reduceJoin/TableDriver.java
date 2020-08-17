@@ -1,6 +1,4 @@
-package com.atguigu.mr.table;
-
-import java.io.IOException;
+package com.atguigu.mr.table_reduceJoin;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -10,6 +8,11 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+import java.io.IOException;
+
+/**
+ * reduceJoin
+ */
 public class TableDriver {
 
 	public static void main(String[] args) throws Exception, IOException, InterruptedException {

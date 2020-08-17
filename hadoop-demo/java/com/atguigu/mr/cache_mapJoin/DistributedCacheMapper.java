@@ -1,12 +1,4 @@
-package com.atguigu.mr.cache;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.util.HashMap;
+package com.atguigu.mr.cache_mapJoin;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.IOUtils;
@@ -15,6 +7,16 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.HashMap;
+
+/**
+ * mapJoin
+ */
 public class DistributedCacheMapper extends Mapper<LongWritable, Text, Text, NullWritable>{
 
 	HashMap<String, String> pdMap = new HashMap<>();

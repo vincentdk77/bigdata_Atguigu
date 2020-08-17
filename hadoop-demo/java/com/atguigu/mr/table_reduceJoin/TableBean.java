@@ -1,10 +1,10 @@
-package com.atguigu.mr.table;
+package com.atguigu.mr.table_reduceJoin;
+
+import org.apache.hadoop.io.Writable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-
-import org.apache.hadoop.io.Writable;
 
 public class TableBean implements Writable{
 

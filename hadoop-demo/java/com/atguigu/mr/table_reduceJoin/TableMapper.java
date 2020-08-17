@@ -1,13 +1,15 @@
-package com.atguigu.mr.table;
-
-import java.io.IOException;
+package com.atguigu.mr.table_reduceJoin;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.InputSplit;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
+import java.io.IOException;
+
+/**
+ * reduceJoin
+ */
 public class TableMapper extends Mapper<LongWritable, Text, Text, TableBean>{
 	
 	String name;

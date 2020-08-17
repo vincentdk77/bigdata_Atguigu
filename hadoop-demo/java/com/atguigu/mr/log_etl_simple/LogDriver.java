@@ -1,6 +1,4 @@
-package com.atguigu.mr.log;
-
-import java.io.IOException;
+package com.atguigu.mr.log_etl_simple;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -10,6 +8,10 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+/**
+ * ETL
+ * 清理的过程往往只需要运行 Mapper 程序，不需要运行 Reduce 程序。
+ */
 public class LogDriver {
 
 	public static void main(String[] args) throws RuntimeException, Exception {

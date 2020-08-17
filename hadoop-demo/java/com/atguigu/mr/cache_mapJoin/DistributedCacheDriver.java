@@ -1,4 +1,4 @@
-package com.atguigu.mr.cache;
+package com.atguigu.mr.cache_mapJoin;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -11,6 +11,9 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.IOException;
 import java.net.URI;
 
+/**
+ * MapJoin
+ */
 public class DistributedCacheDriver {
 
 	public static void main(String[] args) throws Exception, IOException {
@@ -36,10 +39,10 @@ public class DistributedCacheDriver {
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-		// 6 加载缓存数据
+		// 6 加载缓存数据 // TODO: 2020/8/16
 		job.addCacheFile(new URI("file:///e:/input/inputcache/pd.txt"));
 
-		// 7 Map端Join的逻辑不需要Reduce阶段，设置reduceTask数量为0
+		// 7 Map端Join的逻辑不需要Reduce阶段，设置reduceTask数量为0  // TODO: 2020/8/16 没有reduce
 		job.setNumReduceTasks(0);
 
 		// 8 提交
